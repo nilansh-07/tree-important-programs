@@ -25,3 +25,5 @@ This repository showcases a comprehensive suite of **binary tree algorithms** im
 10. Left view of the tree
 11. Right view of the tree
 12. Top view of the tree
+13. Print the leaf nodes of the tree.
+14. Remove the leaf nodes of the tree.
