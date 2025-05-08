@@ -145,6 +145,7 @@ public class Tree {
             return;
 
         if (list.size() == level) {
+            list.add(root);
             System.out.print(root.data + " ");
         }
 
@@ -157,6 +158,7 @@ public class Tree {
             return;
 
         if (list.size() == level) {
+            list.add(root);
             System.out.print(root.data + " ");
         }
 
