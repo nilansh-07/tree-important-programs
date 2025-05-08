@@ -197,6 +197,40 @@ public class Tree {
         }
     }
 
+    private static void printLeafNodes(Node root) {
+        if (root == null)
+            return;
+
+        if (root.left == null && root.right == null) {
+            System.out.print(root.data + " ");
+        }
+        printLeafNodes(root.left);
+        printLeafNodes(root.right);
+    }
+
+    private static Node removeLeafNodes(Node root) {
+        if (root == null)
+            return null;
+
+        if (root.left == null && root.right == null) {
+            return null;
+        }
+
+        root.left = removeLeafNodes(root.left);
+        root.right = removeLeafNodes(root.right);
+
+        return root;
+    }
+
+    private static void printTree(Node root) {
+        if (root == null)
+            return;
+
+        printTree(root.left);
+        System.out.print(root.data + " ");
+        printTree(root.right);
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Node root = createTree(sc);
@@ -217,6 +251,8 @@ public class Tree {
             System.out.println("10. Left view of the tree.");
             System.out.println("11. Right view of the tree.");
             System.out.println("12. Top view of the tree.");
+            System.out.println("13. Print leaf nodes of tree.");
+            System.out.println("14. Remove leaf nodes of the tree.");
 
             System.out.println("Choose to perform task: ");
             int choice = sc.nextInt();
@@ -262,17 +298,24 @@ public class Tree {
                     System.out.println("The Right view of the tree is: ");
                     rightView(root, 0, list);
                     break;
-
                 case 12:
                     System.out.println("The Top view of the tree is: ");
                     topView(root);
                     break;
-
+                case 13:
+                    System.out.println("The Leap nodes of the tree are:");
+                    printLeafNodes(root);
+                    break;
+                case 14:
+                    System.out.println("The Leap nodes removed tree is:");
+                    printTree(removeLeafNodes(root));
+                    break;
                 default:
                     System.out.println("Thanks for using it!");
                     flag = false;
                     break;
             }
+            System.out.println();
         } while (flag);
     }
 }
